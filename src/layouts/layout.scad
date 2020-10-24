@@ -41,8 +41,8 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef, row_sculp
           $row = row;
           $column = column;
 
-            if (key_length == 6.25) {
-              spacebar() {
+            if (key_length == 6.25 || key_length == 3) {
+              spacebar(key_length) {
                 if ($children) {
                   children();
                 } else {
