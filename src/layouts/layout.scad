@@ -40,7 +40,8 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef, row_sculp
           key_profile(profile, row_sculpting, column_value) u(key_length) legend(legends ? legends[row][column] : "") front_legend(front_legends ? front_legends[row][column] : "") cherry() { // (row+4) % 5 + 1
           $row = row;
           $column = column;
-
+          $key_bump = row == (len(list) - 3) && $cherry_home_bump && (column == 4 || column == 7);
+          $dish_depth = ($key_bump && $cherry_dish != false) ? $cherry_dish : $dish_depth;
             if (key_length == 6.25) {
               spacebar() {
                 if ($children) {
