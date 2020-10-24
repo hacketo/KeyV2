@@ -131,15 +131,17 @@ module flat_support() {
   children();
 }
 
-module legend(text, position=[0,0], size=undef) {
+module legend(text, position=[0,0], size=undef, align=undef) {
     font_size = size == undef ? $font_size : size;
-    $legends = [for(L=[$legends, [[text, position, font_size]]], a=L) a];
+    text_align = align == undef ? $font_align : align;
+    $legends = [for(L=[$legends, [[text, position, font_size, [text_align[0], text_align[1]]]]], a=L) a];
     children();
 }
 
-module front_legend(text, position=[0,0], size=undef) {
-    font_size = size == undef ? $font_size : size;
-    $front_legends = [for(L=[$front_legends, [[text, position, font_size]]], a=L) a];
+module front_legend(text, position=[0,0], size=undef, align=undef) {
+    font_size = size == undef ? $front_legends_font_size : size;
+    text_align = align == undef ? $font_front_align : align;
+    $front_legends = [for(L=[$front_legends, [[text, position, font_size, [text_align[0], text_align[1]]]]], a=L) a];
     children();
 }
 

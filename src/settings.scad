@@ -14,6 +14,9 @@ $stem_inner_slop = 0.2;
 
 // Font size used for text
 $font_size = 6;
+$font_align = ["center", "center"];
+$font_front_align = ["center", "center"];
+$front_legends_font_size = $font_size;
 
 // Set this to true if you're making a spacebar!
 $inverted_dish = false;
@@ -134,7 +137,8 @@ $rounded_key = false;
 $minkowski_radius = .33;
 
 /* [Features] */
-
+$cherry_bump = true;
+$cherry_dish = true;
 //insert locating bump
 $key_bump = false;
 //height of the location bump from the top surface of the key
@@ -153,11 +157,17 @@ $double_sculpted = false;
 // Currently does not work with thingiverse customizer, and actually breaks it
 $legends = [];
 
+// Default position to place the legends
+$legends_position = [0,0];
+
 //list of front legends to place on a key format: [text, halign, valign, size]
 //halign = "left" or "center" or "right"
 //valign = "top" or "center" or "bottom"
 // Currently does not work with thingiverse customizer, and actually breaks it
 $front_legends = [];
+
+// Default position to place the front legends
+$front_legends_position = [0,0];
 
 // print legends on the front of the key instead of the top
 $front_print_legends = false;

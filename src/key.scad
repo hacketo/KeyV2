@@ -268,12 +268,12 @@ module top_of_key(){
   }
 }
 
-module keytext(text, position, font_size, depth) {
+module keytext(text, position, font_size, depth, align=undef) {
   woffset = (top_total_key_width()/3.5) * position[0];
   hoffset = (top_total_key_height()/3.5) * -position[1];
   translate([woffset, hoffset, -depth]){
     color($tertiary_color) linear_extrude(height=$dish_depth){
-      text(text=text, font=$font, size=font_size, halign="center", valign="center");
+      text(text=text, font=$font, size=font_size, halign=(align ? align[0] : $font_align[0]), valign=(align ? align[1] : $font_align[1]));
     }
   }
 }
@@ -333,7 +333,7 @@ module legends(depth=0) {
     front_placement() {
       if (len($front_legends) > 0) {
         for (i=[0:len($front_legends)-1]) {
-          rotate([90,0,0]) keytext($front_legends[i][0], $front_legends[i][1], $front_legends[i][2], depth);
+          rotate([90,0,0]) keytext($front_legends[i][0], $front_legends[i][1], $front_legends[i][2], depth, $front_legends[i][3]);
   		  }
 	    }
     }
@@ -343,7 +343,7 @@ module legends(depth=0) {
       // outset legend
       if (len($legends) > 0) {
         for (i=[0:len($legends)-1]) {
-          keytext($legends[i][0], $legends[i][1], $legends[i][2], depth);
+          keytext($legends[i][0], $legends[i][1], $legends[i][2], depth, $legends[i][3]);
         }
       }
     }

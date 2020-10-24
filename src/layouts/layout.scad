@@ -37,7 +37,7 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef, row_sculp
       if (key_length >= 1) {
         translate_u(column_distance - (key_length/2), -row) {
         
-          key_profile(profile, row_sculpting, column_value) u(key_length) legend(legends ? legends[row][column] : "") front_legend(front_legends ? front_legends[row][column] : "") cherry() { // (row+4) % 5 + 1
+          key_profile(profile, row_sculpting, column_value) u(key_length) add_legends(legends ? legends[row][column] : "") add_front_legends(front_legends ? front_legends[row][column] : "") cherry() { // (row+4) % 5 + 1
           $row = row;
           $column = column;
 
@@ -124,6 +124,118 @@ module simple_layout(list) {
           }
         }
       }
+    }
+  }
+}
+
+// Return a legend definition from legend data
+// @param {Array|string} legend_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size, align=["center","center"]]
+// @return {Array} - [text, pos, size, align=["center","center"]] - []
+function get_legend_data(legend_data, is_front=false) = [
+  is_string(legend_data) ? legend_data : is_list(legend_data) ? legend_data[0] : "",
+  is_list(legend_data[1]) ? legend_data[1] : is_front ? $front_legends_position : $legends_position,
+  is_list(legend_data) ? is_num(legend_data[1]) ? legend_data[1] : is_num(legend_data[2]) ? legend_data[2] : undef : undef,
+  is_list(legend_data) ? is_list(legend_data[3]) ? legend_data[3] : undef : undef
+];
+
+// Add legends
+// @param {Array|string} legends_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size]
+// @FIXME ugly..
+module add_legends(legends_data){
+  if (legends_data){
+    multiple = is_list(legends_data[0]);
+    legends_count = multiple ? len(legends_data) : 1;
+    l_data = get_legend_data(multiple ? legends_data[0] : legends_data);
+    legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+      if (multiple && legends_count > 1){
+        l_data = get_legend_data(legends_data[1]);
+        legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+          if (legends_count > 2){
+            l_data = get_legend_data(legends_data[2]);
+            legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+              if (legends_count > 3){
+                l_data = get_legend_data(legends_data[3]);
+                legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+                  if ($children) {
+                    children();
+                  }
+                }
+              }
+              else{
+                if ($children) {
+                  children();
+                }
+              }
+            }
+          }
+          else{
+            if ($children) {
+              children();
+            }
+          }
+        }
+      }
+      else{ 
+        if ($children) {
+          children();
+        }
+      }
+    }
+  }
+  else{
+    if ($children) {
+      children();
+    }
+  }
+}
+
+// Add front legends
+// @param {Array|string} legends_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size]
+// @FIXME ugly..
+module add_front_legends(legends_data){
+  if (legends_data){
+    multiple = is_list(legends_data[0]);
+    legends_count = multiple ? len(legends_data) : 1;
+    l_data = get_legend_data(multiple ? legends_data[0] : legends_data, true);
+    front_legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+      if (multiple && legends_count > 1){
+        l_data = get_legend_data(legends_data[1]);
+        front_legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+          if (legends_count > 2){
+            l_data = get_legend_data(legends_data[2]);
+            front_legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+              if (legends_count > 3){
+                l_data = get_legend_data(legends_data[3]);
+                front_legend(l_data[0], l_data[1], l_data[2], l_data[3]){
+                  if ($children) {
+                    children();
+                  }
+                }
+              }
+              else{
+                if ($children) {
+                  children();
+                }
+              }
+            }
+          }
+          else{
+            if ($children) {
+              children();
+            }
+          }
+        }
+      }
+      else{ 
+        if ($children) {
+          children();
+        }
+      }
+    }
+  }
+  else{
+    if ($children) {
+      children();
     }
   }
 }
