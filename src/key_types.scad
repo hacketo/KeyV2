@@ -1,10 +1,10 @@
 include <functions.scad>
 
-module spacebar(s=6.25, st=undef) {
-  st = st == undef ? s < 3 ? 12 : s == 3 ? unit : 50 : st; 
+module spacebar(u=6.25, stab=undef) {
+  stab = stab == undef ? u < 3 ? 12 : u == 3 ? unit : 50 : stab; 
   $inverted_dish = true;
   $dish_type = "sideways cylindrical";
-  u(s) stabilized(mm=st) children();
+  u(u) stabilized(mm=stab) children();
 }
 
 module lshift() {
