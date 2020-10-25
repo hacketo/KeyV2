@@ -129,7 +129,7 @@ module simple_layout(list) {
 }
 
 // Return a legend definition from legend data
-// @param {Array|string} legend_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size, align=["center","center"]]
+// @param {Array|string} legend_data - can be a list of legends strings ["A","B"] or legend definition, eg : [ ["A", pos=[0,0] , size, align=["center","center"]], "B"]
 // @return {Array} - [text, pos, size, align=["center","center"]] - []
 function get_legend_data(legend_data, is_front=false) = [
   is_string(legend_data) ? legend_data : is_list(legend_data) ? legend_data[0] : "",
@@ -139,7 +139,7 @@ function get_legend_data(legend_data, is_front=false) = [
 ];
 
 // Add legends
-// @param {Array|string} legends_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size]
+// @param {Array|string} legend_data - can be a list of legends strings ["A","B"] or legend definition, eg : [ ["A", pos=[0,0] , size, align=["center","center"]], "B"]
 // @FIXME ugly..
 module add_legends(legends_data){
   if (legends_data){
@@ -190,7 +190,7 @@ module add_legends(legends_data){
 }
 
 // Add front legends
-// @param {Array|string} legends_data - can be a list of legends string of legend definition, eg : [text, pos=[0,0] , size]
+// @param {Array|string} legend_data - can be a list of legends strings ["A","B"] or legend definition, eg : [ ["A", pos=[0,0] , size, align=["center","center"]], "B"]
 // @FIXME ugly..
 module add_front_legends(legends_data){
   if (legends_data){

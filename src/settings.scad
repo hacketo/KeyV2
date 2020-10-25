@@ -14,7 +14,15 @@ $stem_inner_slop = 0.2;
 
 // Font size used for text
 $font_size = 6;
+// Alignment of the font for top legends (not legend positioning) [halign, valign],
+// halign ["left", "center", "right"]    
+// valign ["bottom", "center", "top"]
 $font_align = ["center", "center"];
+
+
+// Alignment of the font for front legends (not legend positioning) [halign, valign],
+// halign ["left", "center", "right"]    
+// valign ["bottom", "center", "top"]
 $font_front_align = ["center", "center"];
 $front_legends_font_size = $font_size;
 
@@ -137,8 +145,7 @@ $rounded_key = false;
 $minkowski_radius = .33;
 
 /* [Features] */
-$cherry_bump = true;
-$cherry_dish = true;
+
 //insert locating bump
 $key_bump = false;
 //height of the location bump from the top surface of the key
@@ -151,18 +158,18 @@ $key_bump_edge = 0.4;
 // set this to true if you are making double sculpted keycaps
 $double_sculpted = false;
 
-//list of legends to place on a key format: [text, halign, valign, size]
-//halign = "left" or "center" or "right"
-//valign = "top" or "center" or "bottom"
+//list of legends to place on a key format: [text, [halign, valign], size]
+//halign : [-1 , 1] -> -1 is left, 1 is right
+//valign : [-1 , 1] -> -1 is top 1 is bottom
 // Currently does not work with thingiverse customizer, and actually breaks it
 $legends = [];
 
 // Default position to place the legends
 $legends_position = [0,0];
 
-//list of front legends to place on a key format: [text, halign, valign, size]
-//halign = "left" or "center" or "right"
-//valign = "top" or "center" or "bottom"
+//list of front legends to place on a key format: [text, [halign, valign], size]
+//halign : [-1 , 1] -> -1 is left, 1 is right
+//valign : [-1 , 1] -> -1 is top 1 is bottom
 // Currently does not work with thingiverse customizer, and actually breaks it
 $front_legends = [];
 
