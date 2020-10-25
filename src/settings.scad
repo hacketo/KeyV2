@@ -14,17 +14,18 @@ $stem_inner_slop = 0.2;
 
 // Font size used for text
 $font_size = 6;
+// Font size used for front legends
+$font_size_front = $font_size;
+
 // Alignment of the font for top legends (not legend positioning) [halign, valign],
-// halign ["left", "center", "right"]    
+// halign ["left", "center", "right"]
 // valign ["bottom", "center", "top"]
 $font_align = ["center", "center"];
 
-
 // Alignment of the font for front legends (not legend positioning) [halign, valign],
-// halign ["left", "center", "right"]    
+// halign ["left", "center", "right"]
 // valign ["bottom", "center", "top"]
-$font_front_align = ["center", "center"];
-$front_legends_font_size = $font_size;
+$font_align_front = ["center", "center"];
 
 // Set this to true if you're making a spacebar!
 $inverted_dish = false;

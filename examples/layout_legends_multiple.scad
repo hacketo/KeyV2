@@ -1,6 +1,6 @@
 include <../includes.scad>
 
-/* 
+/*
   here's how to use the multiple legends input for the layout module.
   You can supply the legends with a list of strings
   [ // Row 1
@@ -14,12 +14,12 @@ include <../includes.scad>
   [ // Row 1
     ["Esc", [-1,-1], 3, ["left", "top"]], "F1", "F2"
   ]
-   
-   use $font_size and $front_legends_font_size to customize the font size
-   use $font_align and $font_front_align to customize the font alignment
-   
-   $font_align : [halign, valign] , 
-   halign ["left", "center", "right"]    
+
+   use $font_size and $font_size_front to customize the font size
+   use $font_align and $font_align_front to customize the font alignment
+
+   $font_align : [halign, valign],
+   halign ["left", "center", "right"]
    valign ["bottom", "center", "top"]
 */
 

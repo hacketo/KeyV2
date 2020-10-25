@@ -139,8 +139,8 @@ module legend(text, position=[0,0], size=undef, align=undef) {
 }
 
 module front_legend(text, position=[0,0], size=undef, align=undef) {
-    font_size = size == undef ? $front_legends_font_size : size;
-    text_align = align == undef ? $font_front_align : align;
+    font_size = size == undef ? $font_size_front : size;
+    text_align = align == undef ? $font_align_front : align;
     $front_legends = [for(L=[$front_legends, [[text, position, font_size, [text_align[0], text_align[1]]]]], a=L) a];
     children();
 }
