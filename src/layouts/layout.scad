@@ -40,8 +40,12 @@ module layout(list, profile="dcs", legends=undef, front_legends=undef, row_sculp
           key_profile(profile, row_sculpting, column_value) u(key_length) legend(legends ? legends[row][column] : "") front_legend(front_legends ? front_legends[row][column] : "") cherry() { // (row+4) % 5 + 1
           $row = row;
           $column = column;
-          $key_bump = row == (len(list) - 3) && $cherry_home_bump && (column == 4 || column == 7);
-          $dish_depth = ($key_bump && $cherry_dish != false) ? $cherry_dish : $dish_depth;
+            // Check home key (F and J) bases on the key column..
+            home_key = row == (len(list) - 3) && (column == 4 || column == 7);
+            // Adds a key bump on the Home keys if the flag $cherry_home_bump is on
+            $key_bump = $cherry_home_bumps && home_key;
+            // Change the current dish depth settings for the home keys using the value of $cherry_dish
+            $dish_depth = home_key && $cherry_home_dish != false ? $cherry_home_dish : $dish_depth;
             if (key_length == 6.25) {
               spacebar() {
                 if ($children) {

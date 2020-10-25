@@ -111,8 +111,8 @@ $dish_overdraw_width = 0;
 // Same as width but for height
 $dish_overdraw_height = 0;
 
-// Enable the a different dish for the home keys (F - J) expected values : false | 1.25 (or any number) 
-$cherry_dish = false;
+// Enable the a different dish for the home keys (F - J) for the layout module, expected values : false | 1.25 (or any number) 
+$cherry_home_dish = false;
 
 /* [Misc] */
 // There's a bevel on the cherry stems to aid insertion / guard against first layer squishing making a hard-to-fit stem.
@@ -144,9 +144,13 @@ $key_bump = false;
 $key_bump_depth = 0.5;
 //distance to move the bump from the front edge of the key
 $key_bump_edge = 0.4;
+// Width of the bump
+$key_bump_width = $font_size;
+// Radius of the bump
+$key_bump_radius = 0.5;
 
 // Enable bumps on the home row keys for the layout module
-$cherry_home_bump = false;
+$cherry_home_bumps = false;
 /* [Hidden] */
 
 // set this to true if you are making double sculpted keycaps
