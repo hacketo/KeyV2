@@ -43,6 +43,7 @@ $wall_thickness = 3;
 // Radius of corners of keycap
 $corner_radius = 1;
 // Radius of the bottom corners of keycap
+// If different it will apply a linear function from bottom to top
 $corner_radius_bottom = $corner_radius;
 
 // Width of the very bottom of the key
